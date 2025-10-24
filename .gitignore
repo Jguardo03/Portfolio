@@ -1,6 +1,6 @@
 # Firebase configuration files (contains sensitive API keys)
-scripts/config.js
-config.js
+scripts/configu.js
+configu.js
 
 # Node modules (if you add any build tools)
 node_modules/

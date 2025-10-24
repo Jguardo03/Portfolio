@@ -3,12 +3,14 @@
 <head>
     <title>Sebastian Guardo Portfolio</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sebastian Guardo">
     <meta name="keywords" content="html,css,javascript">
     <script src="https://kit.fontawesome.com/cffa9d18cb.js" crossorigin="anonymous"></script>
+    <script src="/scripts/config.js"></script>
+    <script type="module" src="/scripts/script.js"></script>
 </head>
 
     <header class="page-header">
@@ -37,7 +39,7 @@
         <section class="contact-body">
             <div class="card card-contact-form">    
                 <h2>Send Me a Message</h2>
-                <div class="contact-form">
+                <form id="contactForm" class="contact-form">
                     <div class="label-input">
                         <label for="Name">Name</Label>
                         <input type="text" id="clientName" placeholder="Your Name" required>
@@ -51,7 +53,7 @@
                         <textarea id="messageTextarea" style=" min-height: 125px;width: 97%;" placeholder="Your Message"></textarea>
                     </div>
                     <a id="contactBtn" class="button-blue">Send message</a>
-                </div>
+                </form>
             </div>
             <div>
                 <h2>Contact Information</h2>
@@ -106,52 +108,6 @@
                 </div>
             </div>
         </section>
-        <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js"; 
-
-        // Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyCeFOpaUwaFECdxZsiGXVHUyo7ycfBuCsg",
-            authDomain: "portfolio-9da15.firebaseapp.com",
-            projectId: "portfolio-9da15",
-            storageBucket: "portfolio-9da15.firebasestorage.app",
-            messagingSenderId: "818550472669",
-            appId: "1:818550472669:web:9aed576a6b0716860b8034",
-            measurementId: "G-9RCQPMJQG9"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const db = getFirestore(app);
-
-        const contactBtn = document.getElementById('contactBtn');
-        const nameLabel = document.getElementById('clientName');
-        const emailLabel = document.getElementById('clientEmail');
-        const messageLabel = document.getElementById('messageTextarea');
-
-        contactBtn.addEventListener('click', async()=>{
-            try{
-                const docRef = await addDoc(collection(db,"Inquires"),{
-                    Name: nameLabel.value,
-                    Email: emailLabel.value,
-                    Message: messageLabel.value
-                });
-                console.log("Enquire add it with ID ",docRef.id);
-                alert("Thank you for your message! I'll get back to you within 24 hours.")
-            }catch(error){
-                console.error("Error saving the enquire ", error);
-                alert("Sorry, there was an issue sending your message. Please try again or contact me directly at jguardoruiz@gmail.com")
-            }
-        })
-
-        </script>
 
 
             
@@ -170,93 +126,4 @@
         
     </footer>
     
-    <script>
-        // Auto-expand textarea functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const textarea = document.getElementById('messageTextarea');
-            
-            if (textarea) {
-                // Function to auto-resize textarea
-                function autoResize() {
-                    // Reset height to auto to get the correct scrollHeight
-                    textarea.style.height = 'auto';
-                    // Set height to scrollHeight to fit content
-                    textarea.style.height = Math.max(50, textarea.scrollHeight) + 'px';
-                }
-                
-                // Auto-resize on input
-                textarea.addEventListener('input', autoResize);
-                
-                // Auto-resize on focus (in case content was pre-filled)
-                textarea.addEventListener('focus', autoResize);
-                
-                // Initial resize
-                autoResize();
-            }
-        });
-
-        const gitHubBtn = document.getElementById('gitHubSeb');
-        const linkedInBtn = document.getElementById('linkedInSeb');
-
-        gitHubBtn.addEventListener('click',()=>{
-            window.open('https://github.com/Jguardo03', '_blank');
-        })
-
-        linkedInBtn.addEventListener('click',()=>{
-            window.open('https://www.linkedin.com/in/juan-sebastian-guardo-ruiz/', '_blank');
-        })
-
-        const gitHubBtnF = document.getElementById('gitHubSebF');
-        const linkedInBtnF = document.getElementById('linkedInSebF');
-
-        gitHubBtnF.addEventListener('click',()=>{
-            window.open('https://github.com/Jguardo03', '_blank');
-        })
-        linkedInBtnF.addEventListener('click',()=>{
-            window.open('https://www.linkedin.com/in/juan-sebastian-guardo-ruiz/', '_blank');
-        })
-        
-        // Mobile Menu JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('active');
-                    
-                    // Toggle hamburger icon
-                    const icon = mobileMenuToggle.querySelector('i');
-                    if (mobileMenu.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-                
-                // Close mobile menu when clicking on a link
-                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-                mobileMenuLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        mobileMenu.classList.remove('active');
-                        const icon = mobileMenuToggle.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    });
-                });
-                
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
-                        mobileMenu.classList.remove('active');
-                        const icon = mobileMenuToggle.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-            }
-        });
-    </script>
 

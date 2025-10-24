@@ -12,7 +12,7 @@ const db = getFirestore(app);
 const contactBtn = document.getElementById('contactBtn');
 const nameLabel = document.getElementById('clientName');
 const emailLabel = document.getElementById('clientEmail');
-const messageLabel = document.getElementById('messageTextarea');
+const messageLabel = document.getElementById('messageTextarea');_
 const contactForm = document.getElementById('contactForm');
 
 

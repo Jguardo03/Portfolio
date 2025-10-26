@@ -36,4 +36,4 @@ jobs:
       with:
         branch: gh-pages
         folder: dist
-        tocken: ${{ secrets.PORTFOLIO_TOKEN }}
+        token: ${{ secrets.PORTFOLIO_TOKEN }}

@@ -15,7 +15,10 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase
 import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js"; 
 
 // Initialize Firebase
+
+
 const app = initializeApp(firebaseConfig);
+console.log('Mi clave de API es:', firebaseConfig.apiKey)
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 

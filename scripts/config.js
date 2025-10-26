@@ -1,13 +1,1 @@
 
-const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_apiKey,
-    authDomain: import.meta.env.VITE_FIREBASE_authDomain,
-    projectId: import.meta.env.VITE_FIREBASE_projectId,
-    storageBucket: import.meta.env.VITE_FIREBASE_storageBucket,
-    messagingSenderId: import.meta.env.VITE_FIREBASE_messagingSenderId,
-    appId: import.meta.env.VITE_FIREBASE_appId,
-    measurementId: import.meta.env.VITE_FIREBASE_measurementId
-};
-
-// Export the configuration so it can be imported by other modules
-export default firebaseConfig;

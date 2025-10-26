@@ -1,12 +1,12 @@
 // Firebase configuration and contact form functionality
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_FIREBASE_APP_ID,
-    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+    apiKey: "AIzaSyCeFOpaUwaFECdxZsiGXVHUyo7ycfBuCsg",
+    authDomain: "portfolio-9da15.firebaseapp.com",
+    projectId: "portfolio-9da15",
+    storageBucket: "portfolio-9da15.firebasestorage.app",
+    messagingSenderId: "818550472669",
+    appId: "1:818550472669:web:9aed576a6b0716860b8034",
+    measurementId: "G-9RCQPMJQG9"
 };
 
 
@@ -18,7 +18,6 @@ import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.c
 
 
 const app = initializeApp(firebaseConfig);
-console.log('Mi clave de API es:', firebaseConfig.apiKey)
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 

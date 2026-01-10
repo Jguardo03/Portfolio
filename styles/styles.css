@@ -383,3 +383,30 @@ img{
     padding: 1rem;
     border-radius: 0.5rem;
 }
+
+.project-header-elements{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0rem 2rem;
+}
+
+.project-head-info{
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+.project-header-links{
+    margin:auto;
+}
+
+.project-body{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:2rem;
+}
+
+.project-content{
+    grid-column: span 2;
+}

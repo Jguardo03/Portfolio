@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js"; 
+import { getFirestore, collection, addDoc, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js"; 
 
 // Initialize Firebase
 
@@ -155,6 +155,74 @@ async function fetchFeaturedProjects() {
     }
 }
 
+//Function to fetch a single project by name
+async function fetchProjectById(projectId) {
+    try{
+        console.log(`Fetching project "${projectId}" from Firebase...`);
+        const docRef = doc(db, "projects", projectId);
+        const docSnapshot = await getDoc(docRef);
+        if(docSnapshot.empty){
+            console.log(`❌ Project "${projectId}" not found.`);
+            return null;
+        }else{
+            const projectData = {
+                id: docSnapshot.id,
+                ...docSnapshot.data()
+            };
+            console.log(`✅ Project "${projectId}" fetched:`, projectData);
+            return projectData;
+        }
+    }catch(error){
+        console.error(`❌ Error fetching project "${projectId}":`, error);
+        return null;
+    }
+}
+
+// Function to get URL search parameters
+
+async function urlSearchParams(){
+    const params = new URLSearchParams(window.location.search);
+    const projectId = params.get('id');
+    console.log("Project ID from URL parameters:", projectId);
+    const projectName = params.get('name');
+    console.log("Project Name from URL parameters:", projectName);
+
+    if(!projectId || projectId.trim() === '' || projectId.length > 50){
+        console.error("❌ Invalid project ID in URL parameters.");
+        return null;
+    }else if( !projectName || projectName.trim() === ''){
+        console.error("❌ Invalid project name in URL parameters.");
+        return null;
+    }   
+    return {
+        id: projectId,
+        name: projectName
+    }
+}
+
+//Function to render a single project details page
+
+async function renderProjectDetails(){
+        const param = await urlSearchParams();
+        if(param === null){
+            console.error("❌ Invalid URL parameters.");
+            return;
+        }
+
+        const {id, name} = param;
+        console.log("✅ Project data from URL parameters:", {id, name});
+
+        const projectData = await fetchProjectById(id);
+        if(projectData === null){
+            console.error("❌ Project not found in database.");
+            return;
+        }
+        document.getElementById('projectName').textContent = projectData.ProjectName || 'Untitled Project';
+        document.getElementById('projectDescription').textContent = projectData.ProjectDescription || 'No description available';
+}
+
+
+
 // Function to create a project card element
 function createProjectCard(project) {
     const cardDiv = document.createElement('div');
@@ -180,7 +248,7 @@ function createProjectCard(project) {
     img.style.display = 'block';
     
     // Add image to container
-    imgContainer.appendChild(img);
+    imgContainer.appendChild(img); 
     
     // Create technologies container
     const techContainer = document.createElement('div');
@@ -317,6 +385,11 @@ function createFeaturedProjectCard(project) {
     cardDiv.appendChild(imgContainer);
     cardDiv.appendChild(contentDiv);
     
+    cardDiv.addEventListener('click', () => {
+        window.location.href=`/project.html?id=${project.id}&name=${project.ProjectName.replaceAll(/\s+/g, '-').toLowerCase()}`;
+
+    });
+
     return cardDiv;
 }
 
@@ -466,5 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderFeaturedProjects();
     } else if (currentPage === 'projects.html') {
         renderProjects();
+    }else if (currentPage === 'project.html') {
+        renderProjectDetails();
     }
 });

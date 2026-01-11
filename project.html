@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sebastian Guardo Portfolio</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sebastian Guardo">
+    <meta name="keywords" content="html,css,javascript">
+    <script src="https://kit.fontawesome.com/cffa9d18cb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="./scripts/carousel.js"></script>
+</head>
+<header class="page-header">
+    <h3><a href="index.html">Sebastian Guardo</a></h3>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a HREF="contact.html">Contact</a>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</header>
+
+<body>
+    <script type="module" src="scripts/script.js"></script>
+    <main class="project">
+        <section class="project-header">
+            <a href="projects.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <div class="project-header-elements">
+                <div class="project-head-info">
+                    <div class="project-type">
+                        <div class="btn-secondary button-secondary-blue" id="type-project">TEST</div>
+                    </div>
+                    <h1 id="projectName"></h1>
+                    <p id="projectDescription">Project Description</p>
+                </div>
+                <div class="project-header-links">
+                    <a href="" class="btn button-blue" id="githubLink" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                </div>
+            </div>
+        </section>
+        <Section class="project-body">
+            <div class="project-content">
+                <div class="project-gallery">
+                    <div class="wrapper">
+                        <div id="sync1" class="owl-carousel owl-theme">
+                        </div>
+
+                        <div id="sync2" class="owl-carousel owl-theme">
+                        </div>
+                    </div>
+                </div>
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p id="projectOverview"></p>
+
+                </div>
+                <div class="project-keyfeatures">
+                    <h2>Key Features</h2>
+                    <ul id="keyFeaturesList">
+                    </ul>
+                </div>
+                <div class="project-video">
+                    <h2>Project Walkthrough</h2>
+                    <div class="video-container">
+                        <iframe id="projectDemo"src="" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                </div>
+                </div>
+            <div class="project-sidebar">
+                
+                <div class="card project-tech">
+                    <div class="project-tech-title">
+                    <i class="fa-solid fa-tag fa-lg" style="color: #368fd3;"></i>
+                    <h3>Technologies Used</h3>
+                    </div>
+                    <div class="project-tech-used" id="technologiesList">
+                    </div>
+
+                </div>
+                <div class="card project-info">
+                    <h3>Project Info</h3>
+                    <div class="project-info-item">
+                        <p>Category</p>
+                        <strong id="projectCategory"></strong>
+                    </div>
+                    <div class="project-info-item">
+                        <p>Repository</p>
+                        <a id="projectRepository" target="_blank">GitHub <i class="fa-solid fa-up-right-from-square fa-xs" style="color: #368fd3;"></i></a>
+                    </div>
+                </div>
+                <div class ="card call-action">
+                    <h3>Have a similar project?</h3>
+                    <p>I can help you build something amazing like this. Let's discuss your requirements.</p>
+                    <a href="contact.html" class="btn button-blue">Get in Touch</a>
+                </div>
+            </div>
+
+        </Section>
+    </main>
+</body>
+<footer >
+    <div>
+        <h3 style="color: #0070f3; ">Juan Sebastian Guardo Ruiz</h3>
+        <p>Building digital experiences with code and creativity</p>
+    </div>
+    <div>
+        <i class="fa-brands fa-github"></i>
+        <i class="fa-brands fa-linkedin-in"></i>
+    </div>
+    
+</footer>

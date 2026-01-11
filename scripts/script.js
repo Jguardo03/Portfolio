@@ -28,7 +28,6 @@ const emailLabel = document.getElementById('clientEmail');
 const messageLabel = document.getElementById('messageTextarea');
 const contactForm = document.getElementById('contactForm');
 
-
 if (contactBtn) {
     contactBtn.addEventListener('click', async()=>{
         if (!nameLabel.value || !emailLabel.value || !messageLabel.value) {
@@ -217,8 +216,65 @@ async function renderProjectDetails(){
             console.error("❌ Project not found in database.");
             return;
         }
+        document.getElementById('type-project').textContent = projectData.Category || 'Unknown Type';
         document.getElementById('projectName').textContent = projectData.ProjectName || 'Untitled Project';
-        document.getElementById('projectDescription').textContent = projectData.ProjectDescription || 'No description available';
+        document.getElementById('projectDescription').textContent = projectData.ProjectOverview || 'No description available';
+        document.getElementById('githubLink').href = projectData.GitHubURL || '#';
+        const images=[
+            projectData.ProjectImage,
+            projectData.ProjectImage1,
+            projectData.ProjectImage2,
+            projectData.ProjectImage3,
+            projectData.ProjectImage4,
+        ].filter(img => img);
+
+        const sync1 =$("#sync1");
+        const sync2 =$("#sync2");
+
+        images.forEach(imgUrl => {
+        const html = `<div class="item"> <img src="${imgUrl}" alt="${projectData.ProjectName || 'Project Image'}"> </div>`;
+
+        sync1.trigger('add.owl.carousel',[$(html)]);
+        sync2.trigger('add.owl.carousel',[$(html)]);
+        });
+
+        sync1.trigger('refresh.owl.carousel');
+        sync2.trigger('refresh.owl.carousel');
+
+    
+        document.getElementById('projectOverview').textContent = projectData.ProjectDescription || 'No overview available';
+        const keyFeatures = [
+            projectData.KeyFeature1,
+            projectData.KeyFeature2,
+            projectData.KeyFeature3,
+            projectData.KeyFeature4,
+            projectData.KeyFeature5,
+            projectData.KeyFeature6
+        ].filter(feature => feature); // Remove empty features
+
+        keyFeatures.forEach(feature => {
+            const featureItem = document.createElement('li');
+            featureItem.innerHTML = `<i class="far fa-check-circle"></i> <span>${feature}</span>`;
+            document.getElementById('keyFeaturesList').appendChild(featureItem);
+        });
+
+        document.getElementById('projectDemo').src = projectData.ProjectDemo || '';
+
+        const projectTechnologies = [
+            projectData.Language1,
+            projectData.Language2,
+            projectData.Language3,
+            projectData.Language4
+        ].filter(tech => tech); // Remove empty values
+
+        projectTechnologies.forEach(tech => {
+            const techItem = document.createElement('span');
+            techItem.className = 'tech-badge';
+            techItem.textContent = tech;
+            document.getElementById('technologiesList').appendChild(techItem);
+        });
+        document.getElementById('projectCategory').textContent = projectData.Category || 'Unknown Category';
+        document.getElementById('projectRepository').href =projectData.GitHubURL || '#';
 }
 
 
@@ -298,7 +354,11 @@ function createProjectCard(project) {
     cardDiv.appendChild(title);
     cardDiv.appendChild(description);
     cardDiv.appendChild(githubIcon);
-    
+    cardDiv.addEventListener('click', () => {
+        window.location.href=`/project.html?id=${project.id}&name=${project.ProjectName.replaceAll(/\s+/g, '-').toLowerCase()}`;
+
+    });
+
     return cardDiv;
 }
 

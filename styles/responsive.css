@@ -82,8 +82,9 @@
     }
     
     h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         line-height: 1.1;
+        margin: 1rem 0;
     }
     
     h2 {
@@ -153,6 +154,7 @@
         display: flex;
         flex-direction: column;
         text-align: center;
+        align-items: center;
     }
     .featured-projects{
         padding: 1.25rem 0.75rem;
@@ -327,6 +329,29 @@
     .home-banner{
         flex-direction: row;
     }
+        /*----------------------------PROJECT EACH ONE----------------*/
+    .project-header-elements{
+        display: flex;
+        gap: 6rem;
+        align-items: center;
+        justify-content: center;
+    }
+    .project-header-links{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .project-keyfeatures ul {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+    .project-keyfeatures li {
+        box-sizing: border-box;
+    }
+
 }
 
 /* Medium Laptop (1024px and up) */
@@ -386,6 +411,35 @@
     .card-grid-tool{
         grid-template-columns: repeat(4,minmax(0,1fr));
     }
+        .project-body {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+    
+        .project-content {
+            grid-column: span 2;
+        }
+    
+        /*Project each one*/
+
+    .project-video {
+    
+        width: 90%; 
+        max-width: 1000px; 
+        margin: 0 auto 3rem auto;
+    }
+
+    .video-container {
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .project-sidebar{
+        position: sticky;
+        top:1rem;
+        max-height: fit-content;
+    }
 }
 
 @media(min-width:1440px){
@@ -407,5 +461,14 @@
 
     #main-image{
         max-height: 600px;
+    }
+
+        /*-----------------------PROJECT EACH ONE ------------------*/
+        .project{
+    padding: 0rem 8rem;  
+}
+    .project-header-links{
+        flex-direction: row;
+        width: 100%;
     }
 }

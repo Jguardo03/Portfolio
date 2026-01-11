@@ -355,7 +355,7 @@ function createProjectCard(project) {
     cardDiv.appendChild(description);
     cardDiv.appendChild(githubIcon);
     cardDiv.addEventListener('click', () => {
-        window.location.href=`/project.html?id=${project.id}&name=${project.ProjectName.replaceAll(/\s+/g, '-').toLowerCase()}`;
+        window.location.href=`Portfolio/project.html?id=${project.id}&name=${project.ProjectName.replaceAll(/\s+/g, '-').toLowerCase()}`;
 
     });
 
@@ -446,7 +446,7 @@ function createFeaturedProjectCard(project) {
     cardDiv.appendChild(contentDiv);
     
     cardDiv.addEventListener('click', () => {
-        window.location.href=`/project.html?id=${project.id}&name=${project.ProjectName.replaceAll(/\s+/g, '-').toLowerCase()}`;
+        window.location.href=`Portfolio/project.html?id=${project.id}&name=${project.ProjectName.replaceAll(/\s+/g, '-').toLowerCase()}`;
 
     });
 
